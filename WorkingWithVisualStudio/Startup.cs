@@ -14,24 +14,16 @@ namespace WorkingWithVisualStudio
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc(mvcOtions =>
+            {
+                mvcOtions.EnableEndpointRouting = false;
+            });
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });
+            app.UseMvcWithDefaultRoute();
         }
     }
 }
