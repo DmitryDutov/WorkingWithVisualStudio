@@ -9,7 +9,8 @@ namespace WorkingWithVisualStudio.Controllers
 {
     public class HomeController: Controller
     {
-        SimpleRepository Repository = SimpleRepository.SharedRepsitory;
+        public IRepository Repository = SimpleRepository.SharedRepsitory;
+        //SimpleRepository Repository = SimpleRepository.SharedRepsitory;
         public IActionResult Index() => View(SimpleRepository.SharedRepsitory.Products.Where(p => p?.Price > 50));
 
         [HttpGet]
@@ -23,3 +24,4 @@ namespace WorkingWithVisualStudio.Controllers
         }
     }
 }
+
