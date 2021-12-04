@@ -11,7 +11,7 @@ namespace WorkingWithVisualStudio.Controllers
     {
         public IRepository Repository = SimpleRepository.SharedRepsitory;
         //SimpleRepository Repository = SimpleRepository.SharedRepsitory;
-        public IActionResult Index() => View(SimpleRepository.SharedRepsitory.Products.Where(p => p?.Price > 1));
+        public IActionResult Index() => View(Repository.Products);
 
         [HttpGet]
         public IActionResult AddProduct() => View(new Product());
